@@ -63,7 +63,10 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "お金はかかりますか？", "acceptedAnswer": { "@type": "Answer", "text": "現在、すべての機能を無料でご利用いただけます。" } }
+        { "@type": "Question", "name": "お金はかかりますか？", "acceptedAnswer": { "@type": "Answer", "text": "現在、すべての機能を無料でご利用いただけます。" } },
+        { "@type": "Question", "name": "エントリーはほかの人に公開されますか？", "acceptedAnswer": { "@type": "Answer", "text": "基本的には公開されません。「公開」を選んだカテゴリのみ公開されます。" } },
+        { "@type": "Question", "name": "公開したエントリーは、あとから編集できますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。公開後も、自分のエントリーはいつでも編集・非公開にできます。" } },
+        { "@type": "Question", "name": "ほかの人が公開しているエントリーは編集できますか？", "acceptedAnswer": { "@type": "Answer", "text": "ほかの人のエントリーは編集できません。閲覧のみです。" } }
       ]
     }
   ]
@@ -325,7 +328,7 @@
 </section>
 
 <!-- ===== FAQ ===== -->
-<!-- ▼ [例：…] の回答は仕様未確定。確定したら [例：] を外し、<head> の FAQPage（構造化データ）にも同じQ&Aを追加する -->
+<!-- ▼ Q&Aを変えたら、<head> の FAQPage（構造化データ）も同じ内容にそろえる -->
 <section id="faq" class="section">
   <div class="wrap wrap-faq stack-40">
     <div class="section-head center">
@@ -339,15 +342,15 @@
       </details>
       <details class="faq">
         <summary><span class="q">Q</span><span class="faq-q">エントリーはほかの人に公開されますか？</span><span class="faq-mark" aria-hidden="true"></span></summary>
-        <div class="faq-a"><span class="a">A</span><p>[例：初期設定では非公開です。「公開」を選んだエントリーだけが、ほかのユーザーにも表示されます。]</p></div>
+        <div class="faq-a"><span class="a">A</span><p>基本的には公開されません。「公開」を選んだカテゴリのみ公開されます。</p></div>
       </details>
       <details class="faq">
         <summary><span class="q">Q</span><span class="faq-q">公開したエントリーは、あとから編集できますか？</span><span class="faq-mark" aria-hidden="true"></span></summary>
-        <div class="faq-a"><span class="a">A</span><p>[例：はい。公開後も、自分のエントリーはいつでも編集・非公開に戻せます。]</p></div>
+        <div class="faq-a"><span class="a">A</span><p>はい。公開後も、自分のエントリーはいつでも編集・非公開にできます。</p></div>
       </details>
       <details class="faq">
-        <summary><span class="q">Q</span><span class="faq-q">ほかの人が公開しているエントリーは編集できますか？ 編集は反映されますか？</span><span class="faq-mark" aria-hidden="true"></span></summary>
-        <div class="faq-a"><span class="a">A</span><p>[例：ほかの人のエントリーは直接編集できません。インポートすると自分用のコピーとして編集できますが、元のエントリーには反映されません。]</p></div>
+        <summary><span class="q">Q</span><span class="faq-q">ほかの人が公開しているエントリーは編集できますか？</span><span class="faq-mark" aria-hidden="true"></span></summary>
+        <div class="faq-a"><span class="a">A</span><p>ほかの人のエントリーは編集できません。閲覧のみです。</p></div>
       </details>
     </div>
   </div>
