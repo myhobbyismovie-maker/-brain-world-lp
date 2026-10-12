@@ -20,6 +20,27 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta name="theme-color" content="#0686FE">
 
+<!-- ▼ Google Analytics（GA4）。GA_MEASUREMENT_ID を測定ID（G-XXXXXXXXXX）に置き換える（README参照） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+
+  // SNSリンクのクリックを「sns_click」イベントとして送る
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-sns]');
+    if (!a) return;
+    gtag('event', 'sns_click', {
+      sns: a.getAttribute('data-sns'),                 // instagram / x
+      link_location: a.getAttribute('data-location'),  // cta / footer
+      link_url: a.href,
+      transport_type: 'beacon'
+    });
+  });
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
@@ -346,11 +367,12 @@
       </div>
       <div class="sns">
         <p>最新情報や年表の投稿はSNSで発信中</p>
+        <p class="sns-note">お問い合わせはInstagram・XのDMからどうぞ</p>
         <div class="btn-row center">
-          <a href="https://www.instagram.com/bwbrainworld" class="sns-btn" target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/bwbrainworld" class="sns-btn" target="_blank" rel="noopener" data-sns="instagram" data-location="cta">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="1.1" y="1.1" width="21.8" height="21.8" rx="6.2"/><circle cx="12" cy="12" r="5.1"/><circle cx="18.4" cy="5.6" r="1.45" fill="currentColor" stroke="none"/></svg>
             <span><span class="sr-only">Instagram </span>@bwbrainworld</span></a>
-          <a href="https://x.com/BWbrainworld" class="sns-btn" target="_blank" rel="noopener">
+          <a href="https://x.com/BWbrainworld" class="sns-btn" target="_blank" rel="noopener" data-sns="x" data-location="cta">
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
             <span><span class="sr-only">X </span>@BWbrainworld</span></a>
         </div>
@@ -367,11 +389,12 @@
     <div class="footer-brand">
       <div class="brand"><img src="images/logo.png" alt="" width="21" height="30"><span>BRAIN WORLD</span></div>
       <span class="footer-tagline">好きな作品を、地図と年表に記録するWebアプリ</span>
+      <span class="footer-tagline">お問い合わせはInstagram・XのDMへ</span>
     </div>
     <div class="footer-links">
-      <a href="https://www.instagram.com/bwbrainworld" target="_blank" rel="noopener">
+      <a href="https://www.instagram.com/bwbrainworld" target="_blank" rel="noopener" data-sns="instagram" data-location="footer">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="1.1" y="1.1" width="21.8" height="21.8" rx="6.2"/><circle cx="12" cy="12" r="5.1"/><circle cx="18.4" cy="5.6" r="1.45" fill="currentColor" stroke="none"/></svg>Instagram</a>
-      <a href="https://x.com/BWbrainworld" target="_blank" rel="noopener">
+      <a href="https://x.com/BWbrainworld" target="_blank" rel="noopener" data-sns="x" data-location="footer">
         <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>X</a>
     </div>
   </div>

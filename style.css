@@ -172,6 +172,7 @@ img.shot-img { aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; bord
 .cta-line:hover { color: var(--blue-text); background: #FFFFFF; }
 .sns { width: 100%; max-width: 560px; border-top: 1px solid rgba(255,255,255,0.3); margin-top: 20px; padding-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .sns p { font-size: 15px; font-weight: 700; }
+.sns .sns-note { font-size: 13px; font-weight: 500; color: #E3EEFB; margin-top: -8px; }
 .sns-btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); background: #FFFFFF; padding: 12px 22px; border-radius: 999px; font-size: 15px; font-weight: 700; transition: background-color .2s; }
 .sns-btn:hover { color: var(--ink); background: #DCEBFF; }
 

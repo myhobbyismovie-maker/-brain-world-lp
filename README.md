@@ -28,6 +28,7 @@ old/              以前のLP（8/31版）。公開対象外・参照用
 |---|---|---|
 | `LP_DOMAIN` | LPの公開ドメイン（例：`lp.example.com`。`https://` は付けない） | `index.html`（canonical・OGP・構造化データ）、`robots.txt`、`sitemap.xml` |
 | `APP_DOMAIN` | アプリ本体のドメイン。ログイン・新規登録・アイディア一覧のリンク先 | `index.html` |
+| `GA_MEASUREMENT_ID` | GA4の測定ID（`G-` で始まる文字列。2か所） | `index.html`（`<head>`） |
 
 > リンク先のパスは仮で `/login` `/signup` `/ideas` にしています。アプリ側の実際のURLに合わせて変更してください。
 
@@ -40,6 +41,44 @@ old/              以前のLP（8/31版）。公開対象外・参照用
 - [ ] **使い方のスクショ4枚**：`<div class="shot">…</div>` を `<img class="shot-img" src="images/…" alt="…">` に置き換える
 - [ ] **アイディアのカード4枚**：トップ画像・タイトル・作成者名・リンク先
 - [ ] ファーストビューの年表・地図スクショは概要資料から切り出したものです。高画質版があれば `images/screen-timeline.jpg` / `images/screen-map.jpg` を差し替える
+
+---
+
+## アクセス解析（GA4）
+
+お問い合わせ窓口は置かず、Instagram・XのDMで受ける方針です。SNSとLPの行き来を、次の2つの方向で計測します。
+
+### ① LP → SNS：SNSボタンのクリック（実装済み）
+
+LP内のSNSリンクがクリックされると、GA4に `sns_click` イベントが送られます。
+
+| パラメータ | 値 |
+|---|---|
+| `sns` | `instagram` / `x` |
+| `link_location` | `cta`（下の青いエリアのボタン） / `footer`（フッター） |
+| `link_url` | 遷移先URL |
+
+**GA4側の設定（1回だけ）**
+1. 管理 → データの表示 → **カスタム定義** → 「カスタムディメンションを作成」で、イベントパラメータ `sns` と `link_location` をそれぞれ登録する（範囲：イベント）。登録しないとレポートで内訳が見られません
+2. 管理 → データの表示 → **イベント** で `sns_click` を「キーイベント」にすると、コンバージョンとして集計されます（任意）
+3. 確認は レポート → リアルタイム、または 管理 → DebugView で、LPのSNSボタンを押して `sns_click` が届くかを見る
+
+> 外部リンクのクリック自体は GA4 の拡張計測機能（`click` イベント）でも自動で取れますが、`sns_click` の方がSNS別・場所別に分けて見られます。
+
+### ② SNS → LP：プロフィール・投稿に貼るリンク（UTM付き）
+
+[Campaign URL Builder](https://ga-dev-tools.google/campaign-url-builder/) と同じ形式で作ったリンクです。`LP_DOMAIN` を置き換えてから、各SNSに貼ってください。GA4の「トラフィック獲得」レポートで、どこから何人来たかを見られます。
+
+| 貼る場所 | リンク |
+|---|---|
+| Instagram プロフィール | `https://LP_DOMAIN/?utm_source=instagram&utm_medium=social&utm_campaign=profile` |
+| Instagram ストーリーズ（リンクスタンプ） | `https://LP_DOMAIN/?utm_source=instagram&utm_medium=social&utm_campaign=story` |
+| X プロフィール | `https://LP_DOMAIN/?utm_source=x&utm_medium=social&utm_campaign=profile` |
+| X 投稿 | `https://LP_DOMAIN/?utm_source=x&utm_medium=social&utm_campaign=post` |
+
+- 投稿ごとに分けて見たいときは、末尾に `&utm_content=beatles` のように投稿名を足す（例：BW TIMELINEのビートルズ回）
+- 値は小文字・半角英数字でそろえる（`Instagram` と `instagram` は別物として集計されます）
+- Instagramの通常投稿のキャプションはリンクが押せないため、プロフィールとストーリーズに貼ります
 
 ---
 
