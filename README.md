@@ -27,10 +27,9 @@ old/              以前のLP（8/31版）。公開対象外・参照用
 | 置き換える文字 | 内容 | 場所 |
 |---|---|---|
 | `LP_DOMAIN` | LPの公開ドメイン（例：`lp.example.com`。`https://` は付けない） | `index.html`（canonical・OGP・構造化データ）、`robots.txt`、`sitemap.xml` |
-| `APP_DOMAIN` | アプリ本体のドメイン。ログイン・新規登録・アイディア一覧のリンク先 | `index.html` |
 | `GA_MEASUREMENT_ID` | GA4の測定ID（`G-` で始まる文字列。2か所） | `index.html`（`<head>`） |
 
-> リンク先のパスは仮で `/login` `/signup` `/ideas` にしています。アプリ側の実際のURLに合わせて変更してください。
+> アプリへのリンク先は設定済みです：ログイン `https://www.brain-world.net/login`、新規登録 `https://www.brain-world.net/signup`、アイディア一覧 `https://www.brain-world.net/ideas`
 
 ## 中身の差し替え（内容が決まりしだい）
 
