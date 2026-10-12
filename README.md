@@ -28,7 +28,6 @@ old/              以前のLP（8/31版）。公開対象外・参照用
 |---|---|---|
 | `LP_DOMAIN` | LPの公開ドメイン（例：`lp.example.com`。`https://` は付けない） | `index.html`（canonical・OGP・構造化データ）、`robots.txt`、`sitemap.xml` |
 | `APP_DOMAIN` | アプリ本体のドメイン。ログイン・新規登録・アイディア一覧のリンク先 | `index.html` |
-| `CONTACT_EMAIL` | お問い合わせ用メールアドレス | `index.html`（フッター） |
 
 > リンク先のパスは仮で `/login` `/signup` `/ideas` にしています。アプリ側の実際のURLに合わせて変更してください。
 
